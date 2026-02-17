@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CS4248 Notebooks</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f5f7fa; color: #1a1a2e; padding: 2rem; max-width: 860px; margin: 0 auto; }
+  h1 { font-size: 1.6rem; margin-bottom: 0.3rem; }
+  .subtitle { color: #666; font-size: 0.9rem; margin-bottom: 2rem; }
+  .lecture { background: #fff; border-radius: 10px; margin-bottom: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.08); overflow: hidden; }
+  .lecture-header { padding: 1rem 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: space-between; user-select: none; transition: background 0.15s; }
+  .lecture-header:hover { background: #f8f9fb; }
+  .lecture-header h2 { font-size: 1.05rem; font-weight: 600; }
+  .lecture-header .count { font-size: 0.8rem; color: #888; margin-left: 0.6rem; }
+  .chevron { font-size: 0.7rem; color: #999; transition: transform 0.2s; }
+  .lecture.open .chevron { transform: rotate(90deg); }
+  .notebook-list { display: none; padding: 0 1.2rem 0.8rem; }
+  .lecture.open .notebook-list { display: block; }
+  .nb { display: flex; align-items: center; padding: 0.55rem 0; border-top: 1px solid #f0f0f0; gap: 0.6rem; }
+  .nb:first-child { border-top: none; }
+  .nb-title { flex: 1; font-size: 0.92rem; }
+  .nb-title a { color: #1a1a2e; text-decoration: none; cursor: pointer; }
+  .nb-title a:hover { color: #4361ee; }
+  .badge { display: inline-block; font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.15em 0.5em; border-radius: 4px; background: #e8ecf4; color: #667; vertical-align: middle; margin-left: 0.4rem; }
+  .btn-colab { font-size: 0.75rem; padding: 0.3em 0.7em; border-radius: 5px; background: #f9ab00; color: #fff; text-decoration: none; font-weight: 600; white-space: nowrap; transition: background 0.15s; }
+  .btn-colab:hover { background: #e09800; }
+  .settings { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+  .settings label { font-size: 0.82rem; color: #555; }
+  .settings select, .settings input { font-size: 0.82rem; padding: 0.3em 0.5em; border: 1px solid #ccc; border-radius: 5px; background: #fff; }
+  .settings input { width: 14rem; }
+  .help-toggle { display: inline-block; font-size: 0.8rem; color: #4361ee; cursor: pointer; margin-left: auto; padding: 0.3em 0.7em; border: 1px solid #d0d7e8; border-radius: 5px; background: #f8f9fb; user-select: none; }
+  .help-toggle:hover { background: #edf0f7; }
+  .help-panel { display: none; background: #fff; border: 1px solid #e0e4ed; border-radius: 10px; padding: 1.3rem 1.5rem; margin-bottom: 1.5rem; font-size: 0.85rem; line-height: 1.65; color: #333; }
+  .help-panel.open { display: block; }
+  .help-panel h3 { font-size: 0.95rem; margin: 1rem 0 0.4rem; color: #1a1a2e; }
+  .help-panel h3:first-child { margin-top: 0; }
+  .help-panel code { background: #f0f2f7; padding: 0.15em 0.45em; border-radius: 4px; font-size: 0.82rem; font-family: "SF Mono", Menlo, Consolas, monospace; }
+  .help-panel pre { background: #1a1a2e; color: #e8ecf4; padding: 0.7em 1em; border-radius: 6px; overflow-x: auto; margin: 0.4rem 0 0.6rem; font-size: 0.8rem; line-height: 1.5; }
+  .help-panel ol, .help-panel ul { padding-left: 1.4em; margin: 0.3rem 0; }
+  .help-panel li { margin: 0.2rem 0; }
+  .help-section { border-top: 1px solid #f0f0f0; padding-top: 0.8rem; margin-top: 0.8rem; }
+  .help-section:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+</style>
+</head>
+<body>
+<h1>CS4248 &mdash; Natural Language Processing</h1>
+<p class="subtitle">Click a lecture to expand. Notebook links open in Jupyter; Colab buttons open in Google Colab.</p>
+
+<div class="settings">
+  <label>Jupyter:</label>
+  <select id="jupyter-mode" onchange="updateLinks()">
+    <option value="lab">JupyterLab</option>
+    <option value="classic">Classic Notebook</option>
+  </select>
+  <label>Base URL:</label>
+  <input id="jupyter-base" type="text" value="http://localhost:8888" onchange="updateLinks()" />
+  <span class="help-toggle" onclick="document.getElementById('help').classList.toggle('open')">? Setup Guide</span>
+</div>
+
+<div class="help-panel" id="help">
+
+  <div class="help-section">
+    <h3>1. Install Jupyter</h3>
+    <p>Check if Jupyter is already installed:</p>
+    <pre>jupyter --version</pre>
+    <p>If not found, install via pip:</p>
+    <pre># JupyterLab (recommended &mdash; modern interface)
+pip install jupyterlab
+
+# Classic Notebook
+pip install notebook</pre>
+    <p>Verify after installing:</p>
+    <pre># Should print a version number
+jupyter lab --version
+jupyter notebook --version</pre>
+  </div>
+
+  <div class="help-section">
+    <h3>2. Start the Jupyter Server</h3>
+    <p>Open a terminal, <code>cd</code> into the <strong>Notebooks</strong> folder, and start Jupyter:</p>
+    <pre>cd path/to/CS4248/Notebooks
+
+# Option A &mdash; JupyterLab
+jupyter lab
+
+# Option B &mdash; Classic Notebook
+jupyter notebook</pre>
+    <p>This launches a local server (usually at <code>http://localhost:8888</code>) and opens a browser tab. If the port is different (e.g. <code>8889</code>), update the <strong>Base URL</strong> field above to match.</p>
+  </div>
+
+  <div class="help-section">
+    <h3>3. Use This Page</h3>
+    <ol>
+      <li>Make sure Jupyter is running (step 2).</li>
+      <li>Select <strong>JupyterLab</strong> or <strong>Classic Notebook</strong> in the dropdown above, matching whichever you started.</li>
+      <li>Click any notebook title &mdash; it opens directly in your running Jupyter server.</li>
+      <li>The yellow <strong>Colab</strong> button opens the original GitHub version in Google Colab (no local setup needed, but local data files won't be available).</li>
+    </ol>
+  </div>
+
+  <div class="help-section">
+    <h3>Troubleshooting</h3>
+    <ul>
+      <li><strong>Notebook shows raw JSON?</strong> &mdash; Jupyter isn't running, or the Base URL is wrong.</li>
+      <li><strong>"File not found" in Jupyter?</strong> &mdash; You started Jupyter from a different folder. Restart it from the <code>Notebooks/</code> directory.</li>
+      <li><strong>Port conflict?</strong> &mdash; If 8888 is in use, Jupyter picks the next available port (8889, 8890...). Check the terminal output and update the Base URL.</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="lecture open" id="lec1">
+  <div class="lecture-header" onclick="toggle('lec1')">
+    <div><h2>Lecture 1: What is NLP and Why is it so Hard?</h2><span class="count">5 notebooks</span></div>
+    <span class="chevron">&#9654;</span>
+  </div>
+  <div class="notebook-list">
+    <div class="nb">
+      <div class="nb-title"><a class="nb-link" data-path="Lecture1/llm_training_data_preparation_basics.ipynb">Data Preparation for Training LLMs &mdash; An Overview</a></div>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/llm_training_data_preparation_basics.ipynb" target="_blank">Colab</a>
+    </div>
+    <div class="nb">
+      <div class="nb-title"><a class="nb-link" data-path="Lecture1/text_token_indexing.ipynb">Token Indexing with Vocabularies</a><span class="badge">optional</span></div>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/text_token_indexing.ipynb" target="_blank">Colab</a>
+    </div>
+    <div class="nb">
+      <div class="nb-title"><a class="nb-link" data-path="Lecture1/batch_processing_sequence_tasks.ipynb">Working with Batches for Sequence Tasks</a><span class="badge">optional</span></div>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/batch_processing_sequence_tasks.ipynb" target="_blank">Colab</a>
+    </div>
+    <div class="nb">
+      <div class="nb-title"><a class="nb-link" data-path="Lecture1/llm_training_data_preparation_batching.ipynb">Data Batching for Training LLMs</a><span class="badge">optional</span></div>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/llm_training_data_preparation_batching.ipynb" target="_blank">Colab</a>
+    </div>
+    <div class="nb">
+      <div class="nb-title"><a class="nb-link" data-path="Lecture1/numpy_basic_tutorial.ipynb">NumPy &mdash; Basic Tutorial</a><span class="badge">optional</span></div>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/numpy_basic_tutorial.ipynb" target="_blank">Colab</a>
+    </div>
+  </div>
+</div>
+
+<div class="lecture" id="lec2">
+  <div class="lecture-header" onclick="toggle('lec2')">
+    <div><h2>Lecture 2: Strings &amp; Words</h2><span class="count">8 notebooks</span></div>
+    <span class="chevron">&#9654;</span>
+  </div>
+  <div class="notebook-list">
+    <div class="nb">
+      <div class="nb-title"><a class="nb-link" data-path="Lecture2/Section 2.1 - Regular Expressions.ipynb">Regular Expressions</a></div>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/nus-cs4248x/blob/master/1-foundations/Section%202.1%20-%20Regular%20Expressions.ipynb" target="_blank">Colab</a>
+    </div>
+    <div class="nb">
+      <div class="nb-title"><a class="nb-link" data-path="Lecture2/text_tokenization_basics.ipynb">Text Tokenization</a></div>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/text_tokenization_basics.ipynb" target="_blank">Colab</a>
+    </div>
+    <div class="nb">
+      <div class="nb-title"><a class="nb-link" data-path="Lecture2/word_tokenizer_implementation.ipynb">Word Tokenizer (implementation from scratch)</a></div>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/word_tokenizer_implementation.ipynb" target="_blank">Colab</a>
+    </div>
+    <div class="nb">
+      <div class="nb-title"><a class="nb-link" data-path="Lecture2/byte_pair_encoding_tokenization.ipynb">Byte-Pair Encoding</a></div>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/byte_pair_encoding_tokenization.ipynb" target="_blank">Colab</a>
+    </div>
+    <div class="nb">
+      <div class="nb-title"><a class="nb-link" data-path="Lecture2/wordpiece_tokenization.ipynb">WordPiece</a></div>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/wordpiece_tokenization.ipynb" target="_blank">Colab</a>
+    </div>
+    <div class="nb">
+      <div class="nb-title"><a class="nb-link" data-path="Lecture2/text_normalization_basics.ipynb">Text Normalization</a></div>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/text_normalization_basics.ipynb" target="_blank">Colab</a>
+    </div>
+    <div class="nb">
+      <div class="nb-title"><a class="nb-link" data-path="Lecture2/stemming_lemmatization_basics.ipynb">Stemming &amp; Lemmatization</a></div>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/stemming_lemmatization_basics.ipynb" target="_blank">Colab</a>
+    </div>
+    <div class="nb">
+      <div class="nb-title"><a class="nb-link" data-path="Lecture2/porter_stemmer.ipynb">Porter Stemmer</a><span class="badge">optional</span></div>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/porter_stemmer.ipynb" target="_blank">Colab</a>
+    </div>
+  </div>
+</div>
+
+<div class="lecture" id="lec3">
+  <div class="lecture-header" onclick="toggle('lec3')">
+    <div><h2>Lecture 3: n-Gram Language Models</h2><span class="count">5 notebooks</span></div>
+    <span class="chevron">&#9654;</span>
+  </div>
+  <div class="notebook-list">
+    <div class="nb">
+      <div class="nb-title"><a class="nb-link" data-path="Lecture3/language_models_basics.ipynb">Language Models</a></div>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/language_models_basics.ipynb" target="_blank">Colab</a>
+    </div>
+    <div class="nb">
+      <div class="nb-title"><a class="nb-link" data-path="Lecture3/Section 3.1 - n-Gram Language Models (basic).ipynb">n-Gram Language Models (basic)</a></div>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/nus-cs4248x/blob/master/1-foundations/Section%203.1%20-%20n-Gram%20Language%20Models%20(basic).ipynb" target="_blank">Colab</a>
+    </div>
+    <div class="nb">
+      <div class="nb-title"><a class="nb-link" data-path="Lecture3/Section 3.2 - n-Gram Language Models (advanced).ipynb">n-Gram Language Models (advanced)</a></div>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/nus-cs4248x/blob/master/1-foundations/Section%203.2%20-%20n-Gram%20Language%20Models%20(advanced).ipynb" target="_blank">Colab</a>
+    </div>
+    <div class="nb">
+      <div class="nb-title"><a class="nb-link" data-path="Lecture3/recurrent_neural_networks_language_model.ipynb">RNN-based Language Models</a><span class="badge">optional</span></div>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/recurrent_neural_networks_language_model.ipynb" target="_blank">Colab</a>
+    </div>
+    <div class="nb">
+      <div class="nb-title"><a class="nb-link" data-path="Lecture3/llm_building_gptstyle_llm_from_scratch.ipynb">Transformer-based Language Models</a><span class="badge">optional</span></div>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/llm_building_gptstyle_llm_from_scratch.ipynb" target="_blank">Colab</a>
+    </div>
+  </div>
+</div>
+
+<div class="lecture" id="lec4">
+  <div class="lecture-header" onclick="toggle('lec4')">
+    <div><h2>Lecture 4: Structure in Language</h2><span class="count">5 notebooks</span></div>
+    <span class="chevron">&#9654;</span>
+  </div>
+  <div class="notebook-list">
+    <div class="nb">
+      <div class="nb-title"><a class="nb-link" data-path="Lecture4/part_of_speech_tagging_basics.ipynb">Part-of-Speech Tagging</a></div>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/part_of_speech_tagging_basics.ipynb" target="_blank">Colab</a>
+    </div>
+    <div class="nb">
+      <div class="nb-title"><a class="nb-link" data-path="Lecture4/Section 2.2 - Constituency Parsing.ipynb">Constituency Parsing</a></div>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/nus-cs4248x/blob/master/2-core-tasks/Section%202.2%20-%20Constituency%20Parsing.ipynb" target="_blank">Colab</a>
+    </div>
+    <div class="nb">
+      <div class="nb-title"><a class="nb-link" data-path="Lecture4/Section 2.2 - Dependency Parsing.ipynb">Dependency Parsing</a></div>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/nus-cs4248x/blob/master/2-core-tasks/Section%202.2%20-%20Dependency%20Parsing.ipynb" target="_blank">Colab</a>
+    </div>
+    <div class="nb">
+      <div class="nb-title"><a class="nb-link" data-path="Lecture4/Section 1.1 - POS Tagging with HMM.ipynb">POS Tagging with HMMs</a><span class="badge">optional</span></div>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/nus-cs4248x/blob/master/2-core-tasks/Section%201.1%20-%20POS%20Tagging%20with%20HMM.ipynb" target="_blank">Colab</a>
+    </div>
+    <div class="nb">
+      <div class="nb-title"><a class="nb-link" data-path="Lecture4/Section 2.1 - CYK Algorihtm.ipynb">CYK Algorithm</a><span class="badge">optional</span></div>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/nus-cs4248x/blob/master/2-core-tasks/Section%202.1%20-%20CYK%20Algorihtm.ipynb" target="_blank">Colab</a>
+    </div>
+  </div>
+</div>
+
+<div class="lecture" id="lec5">
+  <div class="lecture-header" onclick="toggle('lec5')">
+    <div><h2>Lecture 5: Text Classification</h2><span class="count">4 notebooks</span></div>
+    <span class="chevron">&#9654;</span>
+  </div>
+  <div class="notebook-list">
+    <div class="nb">
+      <div class="nb-title"><a class="nb-link" data-path="Lecture5/multinomial_naive_bayes_basics.ipynb">Multinomial Naive Bayes</a></div>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/multinomial_naive_bayes_basics.ipynb" target="_blank">Colab</a>
+    </div>
+    <div class="nb">
+      <div class="nb-title"><a class="nb-link" data-path="Lecture5/vector_space_model_basics.ipynb">Vector Space Model</a></div>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/vector_space_model_basics.ipynb" target="_blank">Colab</a>
+    </div>
+    <div class="nb">
+      <div class="nb-title"><a class="nb-link" data-path="Lecture5/Section 4.2 - Text Classification.ipynb">Text Classification</a><span class="badge">optional</span></div>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/nus-cs4248x/blob/master/1-foundations/Section%204.2%20-%20Text%20Classification.ipynb" target="_blank">Colab</a>
+    </div>
+    <div class="nb">
+      <div class="nb-title"><a class="nb-link" data-path="Lecture5/Text Classification (Naive Bayes from scratch).ipynb">Naive Bayes Classifier (from scratch)</a><span class="badge">optional</span></div>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/nus-cs5246/blob/master/notebooks/Text%20Classification%20(Naive%20Bayes%20from%20scratch).ipynb" target="_blank">Colab</a>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggle(id) {
+  document.getElementById(id).classList.toggle('open');
+}
+
+function updateLinks() {
+  var base = document.getElementById('jupyter-base').value.replace(/\/+$/, '');
+  var mode = document.getElementById('jupyter-mode').value;
+  document.querySelectorAll('a.nb-link').forEach(function(a) {
+    var path = a.getAttribute('data-path');
+    var encoded = path.split('/').map(encodeURIComponent).join('/');
+    if (mode === 'lab') {
+      a.href = base + '/lab/tree/' + encoded;
+    } else {
+      a.href = base + '/notebooks/' + encoded;
+    }
+    a.target = '_blank';
+  });
+  localStorage.setItem('cs4248-jupyter-base', base);
+  localStorage.setItem('cs4248-jupyter-mode', mode);
+}
+
+// Restore saved settings
+(function() {
+  var savedBase = localStorage.getItem('cs4248-jupyter-base');
+  var savedMode = localStorage.getItem('cs4248-jupyter-mode');
+  if (savedBase) document.getElementById('jupyter-base').value = savedBase;
+  if (savedMode) document.getElementById('jupyter-mode').value = savedMode;
+  updateLinks();
+})();
+</script>
+</body>
+</html>

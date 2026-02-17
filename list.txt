@@ -1,0 +1,90 @@
+Lecture 01: What is NLP and Why is it so Hard?
+
+Data Preparation for Training LLMs — An Overview
+https://github.com/chrisvdweth/selene/blob/master/notebooks/llm_training_data_preparation_basics.ipynb
+
+Token Indexing with Vocabularies (optional)
+https://github.com/chrisvdweth/selene/blob/master/notebooks/text_token_indexing.ipynb
+
+Working with Batches for Sequence Tasks (optional)
+https://github.com/chrisvdweth/selene/blob/master/notebooks/batch_processing_sequence_tasks.ipynb
+
+Data Batching for Training LLMs (optional)
+https://github.com/chrisvdweth/selene/blob/master/notebooks/llm_training_data_preparation_batching.ipynb
+
+NumPy — Basic Tutorial (optional)
+https://github.com/chrisvdweth/selene/blob/master/notebooks/numpy_basic_tutorial.ipynb
+
+Lecture 02: Strings & Words
+
+Regular Expressions
+https://github.com/chrisvdweth/nus-cs4248x/blob/master/1-foundations/Section%202.1%20-%20Regular%20Expressions.ipynb
+
+Text Tokenization
+https://github.com/chrisvdweth/selene/blob/master/notebooks/text_tokenization_basics.ipynb
+
+Word Tokenizer (implementation from scratch)
+https://github.com/chrisvdweth/selene/blob/master/notebooks/word_tokenizer_implementation.ipynb
+
+Byte-Pair Encoding
+https://github.com/chrisvdweth/selene/blob/master/notebooks/byte_pair_encoding_tokenization.ipynb
+
+WordPiece
+https://github.com/chrisvdweth/selene/blob/master/notebooks/wordpiece_tokenization.ipynb
+
+Text Normalization
+https://github.com/chrisvdweth/selene/blob/master/notebooks/text_normalization_basics.ipynb
+
+Stemming & Lemmatization
+https://github.com/chrisvdweth/selene/blob/master/notebooks/stemming_lemmatization_basics.ipynb
+
+Porter Stemmer (optional)
+https://github.com/chrisvdweth/selene/blob/master/notebooks/porter_stemmer.ipynb
+
+Lecture 03: n-Gram Language Models
+
+Language Models
+https://github.com/chrisvdweth/selene/blob/master/notebooks/language_models_basics.ipynb
+
+n-Gram Language Models (basic)
+https://github.com/chrisvdweth/nus-cs4248x/blob/master/1-foundations/Section%203.1%20-%20n-Gram%20Language%20Models%20(basic).ipynb
+
+n-Gram Language Models (advanced)
+https://github.com/chrisvdweth/nus-cs4248x/blob/master/1-foundations/Section%203.2%20-%20n-Gram%20Language%20Models%20(advanced).ipynb
+
+RNN-based Language Models (optional; fully covered in later lectures)
+https://github.com/chrisvdweth/selene/blob/master/notebooks/recurrent_neural_networks_language_model.ipynb
+
+Transformer-based Language Models (optional; fully covered in later lectures)
+https://github.com/chrisvdweth/selene/blob/master/notebooks/llm_building_gptstyle_llm_from_scratch.ipynb
+
+Lecture 04: Structure in Language
+
+Part-of-Speech Tagging
+https://github.com/chrisvdweth/selene/blob/master/notebooks/part_of_speech_tagging_basics.ipynb
+
+Constituency Parsing
+https://github.com/chrisvdweth/nus-cs4248x/blob/master/2-core-tasks/Section%202.2%20-%20Constituency%20Parsing.ipynb
+
+Dependency Parsing
+https://github.com/chrisvdweth/nus-cs4248x/blob/master/2-core-tasks/Section%202.2%20-%20Dependency%20Parsing.ipynb
+
+POS Tagging with HMMs (optional)
+https://github.com/chrisvdweth/nus-cs4248x/blob/master/2-core-tasks/Section%201.1%20-%20POS%20Tagging%20with%20HMM.ipynb
+
+CYK Algorithm (optional)
+https://github.com/chrisvdweth/nus-cs4248x/blob/master/2-core-tasks/Section%202.1%20-%20CYK%20Algorihtm.ipynb
+
+Lecture 05: Text Classification
+
+Multinomial Naive Bayes
+https://github.com/chrisvdweth/selene/blob/master/notebooks/multinomial_naive_bayes_basics.ipynb
+
+Vector Space Model
+https://github.com/chrisvdweth/selene/blob/master/notebooks/vector_space_model_basics.ipynb
+
+Text Classification (optional; basic practical example)
+https://github.com/chrisvdweth/nus-cs4248x/blob/master/1-foundations/Section%204.2%20-%20Text%20Classification.ipynb
+
+Naive Bayes Classifier (optional; implementation from scratch)
+https://github.com/chrisvdweth/nus-cs5246/blob/master/notebooks/Text%20Classification%20(Naive%20Bayes%20from%20scratch).ipynb
