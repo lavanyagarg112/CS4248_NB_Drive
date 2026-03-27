@@ -2,11 +2,10 @@
 
 ## Option 1: Google Colab (no setup)
 
-1. Open `index.html` in your browser
-2. Click the **Colab** button next to any notebook — opens a standalone version that works in Colab
-3. Notebooks marked **Local only** don't have standalone versions and may not work in Colab
-
-> Note: Colab runs a copy — your changes only exist in that session. They don't affect the originals.
+1. Open `index.html` in your browser (or visit the GitHub Pages link)
+2. Click the **Colab** button next to any notebook
+3. To save your work: **File > Save a copy in Drive**
+4. Notebooks marked **Local only** don't have standalone versions and may not work in Colab
 
 ## Option 2: Local Jupyter
 
@@ -14,10 +13,18 @@
 git clone <this-repo-url>
 cd Notebooks
 python fetch_notebooks.py list.txt .
-jupyter lab
 ```
 
-Then open `index.html` in your browser and click any notebook link.
+Then start Jupyter:
+```bash
+# JupyterLab (recommended)
+jupyter lab
+
+# OR Classic Notebook
+jupyter notebook
+```
+
+Open `index.html` in your browser and click any notebook link.
 
 To reset notebooks to their original state (discard local edits):
 ```bash
