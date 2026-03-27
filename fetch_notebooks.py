@@ -466,7 +466,15 @@ def _build_html(lectures: list[dict]) -> str:
 <div class="help-panel" id="help">
 
   <div class="help-section">
-    <h3>1. Install Jupyter</h3>
+    <h3>1. Clone the Repo &amp; Fetch Notebooks</h3>
+    <pre>git clone &lt;repo-url&gt;
+cd Notebooks
+python fetch_notebooks.py list.txt .</pre>
+    <p>This downloads all notebooks and their dependencies. You only need to do this once (or re-run to reset notebooks to their original state).</p>
+  </div>
+
+  <div class="help-section">
+    <h3>2. Install Jupyter</h3>
     <p>Check if Jupyter is already installed:</p>
     <pre>jupyter --version</pre>
     <p>If not found, install via pip:</p>
@@ -482,7 +490,7 @@ jupyter notebook --version</pre>
   </div>
 
   <div class="help-section">
-    <h3>2. Start the Jupyter Server</h3>
+    <h3>3. Start the Jupyter Server</h3>
     <p>Open a terminal, <code>cd</code> into the <strong>Notebooks</strong> folder, and start Jupyter:</p>
     <pre>cd path/to/CS4248/Notebooks
 
@@ -495,9 +503,9 @@ jupyter notebook</pre>
   </div>
 
   <div class="help-section">
-    <h3>3. Use This Page</h3>
+    <h3>4. Use This Page</h3>
     <ol>
-      <li>Make sure Jupyter is running (step 2).</li>
+      <li>Make sure Jupyter is running (step 3).</li>
       <li>Select <strong>JupyterLab</strong> or <strong>Classic Notebook</strong> in the dropdown above, matching whichever you started.</li>
       <li>Click any notebook title &mdash; it opens directly in your running Jupyter server.</li>
       <li>The yellow <strong>Colab</strong> button opens the original GitHub version in Google Colab (no local setup needed, but local data files won't be available).</li>
