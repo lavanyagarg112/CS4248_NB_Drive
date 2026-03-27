@@ -13,8 +13,10 @@
 git clone https://github.com/lavanyagarg112/CS4248_NB_Drive.git
 ```
 
-Then start Jupyter:
+Then start Jupyter **from inside the cloned repo**:
 ```bash
+cd CS4248_NB_Drive
+
 # JupyterLab (recommended)
 jupyter lab
 
