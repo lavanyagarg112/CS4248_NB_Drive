@@ -427,6 +427,9 @@ def _build_html(lectures: list[dict]) -> str:
   .badge { display: inline-block; font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.15em 0.5em; border-radius: 4px; background: #e8ecf4; color: #667; vertical-align: middle; margin-left: 0.4rem; }
   .btn-colab { font-size: 0.75rem; padding: 0.3em 0.7em; border-radius: 5px; background: #f9ab00; color: #fff; text-decoration: none; font-weight: 600; white-space: nowrap; transition: background 0.15s; }
   .btn-colab:hover { background: #e09800; }
+  .btn-colab.no-standalone { background: #ccc; color: #666; position: relative; }
+  .btn-colab.no-standalone:hover { background: #bbb; }
+  .btn-colab.no-standalone:hover::after { content: "No standalone version — may not work in Colab"; position: absolute; bottom: calc(100% + 6px); right: 0; background: #333; color: #fff; font-size: 0.75rem; font-weight: 400; padding: 0.5em 0.8em; border-radius: 6px; white-space: nowrap; z-index: 10; pointer-events: none; }
   .settings { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
   .settings label { font-size: 0.82rem; color: #555; }
   .settings select, .settings input { font-size: 0.82rem; padding: 0.3em 0.5em; border: 1px solid #ccc; border-radius: 5px; background: #fff; }
@@ -532,10 +535,14 @@ jupyter notebook</pre>
             display = _html_escape(nb['name'])
             colab_url = _colab_url(nb['github_url'])
             badge = '<span class="badge">optional</span>' if nb['optional'] else ''
+            has_standalone = '/selene/' in nb['github_url']
+            colab_cls = 'btn-colab' if has_standalone else 'btn-colab no-standalone'
+            colab_tip = ''
+            colab_label = 'Colab' if has_standalone else 'Local only'
 
             parts.append(f'    <div class="nb">')
             parts.append(f'      <div class="nb-title"><a class="nb-link" data-path="{data_path}">{display}</a>{badge}</div>')
-            parts.append(f'      <a class="btn-colab" href="{colab_url}" target="_blank">Colab</a>')
+            parts.append(f'      <a class="{colab_cls}" href="{colab_url}" target="_blank"{colab_tip}>{colab_label}</a>')
             parts.append(f'    </div>')
 
         parts.append(f'  </div>')
@@ -593,10 +600,15 @@ def _html_escape(text: str) -> str:
 
 
 def _colab_url(github_url: str) -> str:
-    """Convert GitHub blob URL to Colab URL."""
-    return github_url.replace(
+    """Convert GitHub blob URL to Colab URL, using standalone version for selene notebooks."""
+    colab = github_url.replace(
         'https://github.com/', 'https://colab.research.google.com/github/'
     )
+    # Use standalone version for selene notebooks (they inline src/ dependencies)
+    if '/selene/' in colab:
+        colab = colab.replace('/notebooks/', '/notebooks/standalone/')
+        colab = colab.replace('.ipynb', '_standalone.ipynb')
+    return colab
 
 
 # ── Main ─────────────────────────────────────────────────────────────────────

@@ -26,6 +26,9 @@
   .badge { display: inline-block; font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.15em 0.5em; border-radius: 4px; background: #e8ecf4; color: #667; vertical-align: middle; margin-left: 0.4rem; }
   .btn-colab { font-size: 0.75rem; padding: 0.3em 0.7em; border-radius: 5px; background: #f9ab00; color: #fff; text-decoration: none; font-weight: 600; white-space: nowrap; transition: background 0.15s; }
   .btn-colab:hover { background: #e09800; }
+  .btn-colab.no-standalone { background: #ccc; color: #666; position: relative; }
+  .btn-colab.no-standalone:hover { background: #bbb; }
+  .btn-colab.no-standalone:hover::after { content: "No standalone version — may not work in Colab"; position: absolute; bottom: calc(100% + 6px); right: 0; background: #333; color: #fff; font-size: 0.75rem; font-weight: 400; padding: 0.5em 0.8em; border-radius: 6px; white-space: nowrap; z-index: 10; pointer-events: none; }
   .settings { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
   .settings label { font-size: 0.82rem; color: #555; }
   .settings select, .settings input { font-size: 0.82rem; padding: 0.3em 0.5em; border: 1px solid #ccc; border-radius: 5px; background: #fff; }
@@ -119,23 +122,23 @@ jupyter notebook</pre>
   <div class="notebook-list">
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture1/llm_training_data_preparation_basics.ipynb">Data Preparation for Training LLMs &mdash; An Overview</a></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/llm_training_data_preparation_basics.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/llm_training_data_preparation_basics_standalone.ipynb" target="_blank">Colab</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture1/text_token_indexing.ipynb">Token Indexing with Vocabularies</a><span class="badge">optional</span></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/text_token_indexing.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/text_token_indexing_standalone.ipynb" target="_blank">Colab</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture1/batch_processing_sequence_tasks.ipynb">Working with Batches for Sequence Tasks</a><span class="badge">optional</span></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/batch_processing_sequence_tasks.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/batch_processing_sequence_tasks_standalone.ipynb" target="_blank">Colab</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture1/llm_training_data_preparation_batching.ipynb">Data Batching for Training LLMs</a><span class="badge">optional</span></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/llm_training_data_preparation_batching.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/llm_training_data_preparation_batching_standalone.ipynb" target="_blank">Colab</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture1/numpy_basic_tutorial.ipynb">NumPy &mdash; Basic Tutorial</a><span class="badge">optional</span></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/numpy_basic_tutorial.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/numpy_basic_tutorial_standalone.ipynb" target="_blank">Colab</a>
     </div>
   </div>
 </div>
@@ -148,35 +151,35 @@ jupyter notebook</pre>
   <div class="notebook-list">
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture2/Section 2.1 - Regular Expressions.ipynb">Regular Expressions</a></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/nus-cs4248x/blob/master/1-foundations/Section%202.1%20-%20Regular%20Expressions.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab no-standalone" href="https://colab.research.google.com/github/chrisvdweth/nus-cs4248x/blob/master/1-foundations/Section%202.1%20-%20Regular%20Expressions.ipynb" target="_blank">Local only</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture2/text_tokenization_basics.ipynb">Text Tokenization</a></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/text_tokenization_basics.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/text_tokenization_basics_standalone.ipynb" target="_blank">Colab</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture2/word_tokenizer_implementation.ipynb">Word Tokenizer (implementation from scratch)</a></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/word_tokenizer_implementation.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/word_tokenizer_implementation_standalone.ipynb" target="_blank">Colab</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture2/byte_pair_encoding_tokenization.ipynb">Byte-Pair Encoding</a></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/byte_pair_encoding_tokenization.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/byte_pair_encoding_tokenization_standalone.ipynb" target="_blank">Colab</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture2/wordpiece_tokenization.ipynb">WordPiece</a></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/wordpiece_tokenization.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/wordpiece_tokenization_standalone.ipynb" target="_blank">Colab</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture2/text_normalization_basics.ipynb">Text Normalization</a></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/text_normalization_basics.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/text_normalization_basics_standalone.ipynb" target="_blank">Colab</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture2/stemming_lemmatization_basics.ipynb">Stemming &amp; Lemmatization</a></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/stemming_lemmatization_basics.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/stemming_lemmatization_basics_standalone.ipynb" target="_blank">Colab</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture2/porter_stemmer.ipynb">Porter Stemmer</a><span class="badge">optional</span></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/porter_stemmer.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/porter_stemmer_standalone.ipynb" target="_blank">Colab</a>
     </div>
   </div>
 </div>
@@ -189,23 +192,23 @@ jupyter notebook</pre>
   <div class="notebook-list">
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture3/language_models_basics.ipynb">Language Models</a></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/language_models_basics.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/language_models_basics_standalone.ipynb" target="_blank">Colab</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture3/Section 3.1 - n-Gram Language Models (basic).ipynb">n-Gram Language Models (basic)</a></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/nus-cs4248x/blob/master/1-foundations/Section%203.1%20-%20n-Gram%20Language%20Models%20(basic).ipynb" target="_blank">Colab</a>
+      <a class="btn-colab no-standalone" href="https://colab.research.google.com/github/chrisvdweth/nus-cs4248x/blob/master/1-foundations/Section%203.1%20-%20n-Gram%20Language%20Models%20(basic).ipynb" target="_blank">Local only</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture3/Section 3.2 - n-Gram Language Models (advanced).ipynb">n-Gram Language Models (advanced)</a></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/nus-cs4248x/blob/master/1-foundations/Section%203.2%20-%20n-Gram%20Language%20Models%20(advanced).ipynb" target="_blank">Colab</a>
+      <a class="btn-colab no-standalone" href="https://colab.research.google.com/github/chrisvdweth/nus-cs4248x/blob/master/1-foundations/Section%203.2%20-%20n-Gram%20Language%20Models%20(advanced).ipynb" target="_blank">Local only</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture3/recurrent_neural_networks_language_model.ipynb">RNN-based Language Models</a><span class="badge">optional</span></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/recurrent_neural_networks_language_model.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/recurrent_neural_networks_language_model_standalone.ipynb" target="_blank">Colab</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture3/llm_building_gptstyle_llm_from_scratch.ipynb">Transformer-based Language Models</a><span class="badge">optional</span></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/llm_building_gptstyle_llm_from_scratch.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/llm_building_gptstyle_llm_from_scratch_standalone.ipynb" target="_blank">Colab</a>
     </div>
   </div>
 </div>
@@ -218,23 +221,23 @@ jupyter notebook</pre>
   <div class="notebook-list">
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture4/part_of_speech_tagging_basics.ipynb">Part-of-Speech Tagging</a></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/part_of_speech_tagging_basics.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/part_of_speech_tagging_basics_standalone.ipynb" target="_blank">Colab</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture4/Section 2.2 - Constituency Parsing.ipynb">Constituency Parsing</a></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/nus-cs4248x/blob/master/2-core-tasks/Section%202.2%20-%20Constituency%20Parsing.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab no-standalone" href="https://colab.research.google.com/github/chrisvdweth/nus-cs4248x/blob/master/2-core-tasks/Section%202.2%20-%20Constituency%20Parsing.ipynb" target="_blank">Local only</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture4/Section 2.2 - Dependency Parsing.ipynb">Dependency Parsing</a></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/nus-cs4248x/blob/master/2-core-tasks/Section%202.2%20-%20Dependency%20Parsing.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab no-standalone" href="https://colab.research.google.com/github/chrisvdweth/nus-cs4248x/blob/master/2-core-tasks/Section%202.2%20-%20Dependency%20Parsing.ipynb" target="_blank">Local only</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture4/Section 1.1 - POS Tagging with HMM.ipynb">POS Tagging with HMMs</a><span class="badge">optional</span></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/nus-cs4248x/blob/master/2-core-tasks/Section%201.1%20-%20POS%20Tagging%20with%20HMM.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab no-standalone" href="https://colab.research.google.com/github/chrisvdweth/nus-cs4248x/blob/master/2-core-tasks/Section%201.1%20-%20POS%20Tagging%20with%20HMM.ipynb" target="_blank">Local only</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture4/Section 2.1 - CYK Algorihtm.ipynb">CYK Algorithm</a><span class="badge">optional</span></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/nus-cs4248x/blob/master/2-core-tasks/Section%202.1%20-%20CYK%20Algorihtm.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab no-standalone" href="https://colab.research.google.com/github/chrisvdweth/nus-cs4248x/blob/master/2-core-tasks/Section%202.1%20-%20CYK%20Algorihtm.ipynb" target="_blank">Local only</a>
     </div>
   </div>
 </div>
@@ -247,19 +250,19 @@ jupyter notebook</pre>
   <div class="notebook-list">
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture5/multinomial_naive_bayes_basics.ipynb">Multinomial Naive Bayes</a></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/multinomial_naive_bayes_basics.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/multinomial_naive_bayes_basics_standalone.ipynb" target="_blank">Colab</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture5/vector_space_model_basics.ipynb">Vector Space Model</a></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/vector_space_model_basics.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/vector_space_model_basics_standalone.ipynb" target="_blank">Colab</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture5/Section 4.2 - Text Classification.ipynb">Text Classification</a><span class="badge">optional</span></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/nus-cs4248x/blob/master/1-foundations/Section%204.2%20-%20Text%20Classification.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab no-standalone" href="https://colab.research.google.com/github/chrisvdweth/nus-cs4248x/blob/master/1-foundations/Section%204.2%20-%20Text%20Classification.ipynb" target="_blank">Local only</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture5/Text Classification (Naive Bayes from scratch).ipynb">Naive Bayes Classifier (from scratch)</a><span class="badge">optional</span></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/nus-cs5246/blob/master/notebooks/Text%20Classification%20(Naive%20Bayes%20from%20scratch).ipynb" target="_blank">Colab</a>
+      <a class="btn-colab no-standalone" href="https://colab.research.google.com/github/chrisvdweth/nus-cs5246/blob/master/notebooks/Text%20Classification%20(Naive%20Bayes%20from%20scratch).ipynb" target="_blank">Local only</a>
     </div>
   </div>
 </div>
@@ -272,43 +275,43 @@ jupyter notebook</pre>
   <div class="notebook-list">
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture6/logistic_regression_basics.ipynb">Logistic Regression (Basics)</a></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/logistic_regression_basics.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/logistic_regression_basics_standalone.ipynb" target="_blank">Colab</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture6/artificial_neural_networks_basics.ipynb">Artificial Neural Networks (Basic Architecture)</a></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/artificial_neural_networks_basics.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/artificial_neural_networks_basics_standalone.ipynb" target="_blank">Colab</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture6/gradient_descent_basics.ipynb">Gradient Descent</a></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/gradient_descent_basics.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/gradient_descent_basics_standalone.ipynb" target="_blank">Colab</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture6/backpropagation_basic_examples.ipynb">Backpropagation (Basic Examples)</a></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/backpropagation_basic_examples.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/backpropagation_basic_examples_standalone.ipynb" target="_blank">Colab</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture6/bias_variance_ml_basics.ipynb">Bias &amp; Variance (Machine Learning)</a></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/bias_variance_ml_basics.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/bias_variance_ml_basics_standalone.ipynb" target="_blank">Colab</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture6/logistic_regression_math.ipynb">Logistic Regression</a><span class="badge">optional</span></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/logistic_regression_math.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/logistic_regression_math_standalone.ipynb" target="_blank">Colab</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture6/nn_linear_layer.ipynb">The Linear Layer</a><span class="badge">optional</span></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/nn_linear_layer.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/nn_linear_layer_standalone.ipynb" target="_blank">Colab</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture6/nn_softmax.ipynb">The Softmax Function</a><span class="badge">optional</span></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/nn_softmax.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/nn_softmax_standalone.ipynb" target="_blank">Colab</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture6/backpropagation_generalization.ipynb">Backpropagation</a><span class="badge">optional</span></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/backpropagation_generalization.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/backpropagation_generalization_standalone.ipynb" target="_blank">Colab</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture6/ann_from_scratch_numpy_only.ipynb">Implementing an ANN from Scratch</a><span class="badge">optional</span></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/ann_from_scratch_numpy_only.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/ann_from_scratch_numpy_only_standalone.ipynb" target="_blank">Colab</a>
     </div>
   </div>
 </div>
@@ -321,15 +324,15 @@ jupyter notebook</pre>
   <div class="notebook-list">
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture7/word_text_embeddings_overview.ipynb">Word &amp; Text Embeddings (Overview)</a></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/word_text_embeddings_overview.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/word_text_embeddings_overview_standalone.ipynb" target="_blank">Colab</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture7/word2vec_basics.ipynb">Word2Vec (Basics)</a></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/word2vec_basics.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/word2vec_basics_standalone.ipynb" target="_blank">Colab</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture7/word2vec_training_from_scratch.ipynb">Word2Vec (Training from Scratch)</a></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/word2vec_training_from_scratch.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/word2vec_training_from_scratch_standalone.ipynb" target="_blank">Colab</a>
     </div>
   </div>
 </div>
@@ -342,15 +345,15 @@ jupyter notebook</pre>
   <div class="notebook-list">
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture8/recurrent_neural_networks_basics.ipynb">Recurrent Neural Networks</a></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/recurrent_neural_networks_basics.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/recurrent_neural_networks_basics_standalone.ipynb" target="_blank">Colab</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture8/recurrent_neural_networks_language_model.ipynb">Language Modeling with RNNs</a></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/recurrent_neural_networks_language_model.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/recurrent_neural_networks_language_model_standalone.ipynb" target="_blank">Colab</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture8/batch_processing_sequence_tasks.ipynb">Working with Batches for Sequence Tasks</a></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/batch_processing_sequence_tasks.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/batch_processing_sequence_tasks_standalone.ipynb" target="_blank">Colab</a>
     </div>
   </div>
 </div>
@@ -363,31 +366,31 @@ jupyter notebook</pre>
   <div class="notebook-list">
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture9/attention_mha_basics.ipynb">Attention Mechanism</a></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/attention_mha_basics.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/attention_mha_basics_standalone.ipynb" target="_blank">Colab</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture9/transformers_basic_architecture.ipynb">Transformers (Basic Architecture)</a></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/transformers_basic_architecture.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/transformers_basic_architecture_standalone.ipynb" target="_blank">Colab</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture9/positional_encodings_overview.ipynb">Positional Encodings (Basics)</a></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/positional_encodings_overview.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/positional_encodings_overview_standalone.ipynb" target="_blank">Colab</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture9/positional_encodings_original_transformer.ipynb">Positional Encodings (Original Transformer)</a></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/positional_encodings_original_transformer.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/positional_encodings_original_transformer_standalone.ipynb" target="_blank">Colab</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture9/positional_encodings_rope_basics.ipynb">Positional Encodings &mdash; RoPE</a><span class="badge">optional</span></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/positional_encodings_rope_basics.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/positional_encodings_rope_basics_standalone.ipynb" target="_blank">Colab</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture9/machine_translation_transformers.ipynb">Machine Translation with Transformers</a></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/machine_translation_transformers.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/machine_translation_transformers_standalone.ipynb" target="_blank">Colab</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture9/masking_sequence_models.ipynb">Masking in Sequence Models</a></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/masking_sequence_models.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/masking_sequence_models_standalone.ipynb" target="_blank">Colab</a>
     </div>
   </div>
 </div>
@@ -400,27 +403,27 @@ jupyter notebook</pre>
   <div class="notebook-list">
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture10/positional_encodings_rope_basics.ipynb">Positional Encodings (RoPE)</a></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/positional_encodings_rope_basics.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/positional_encodings_rope_basics_standalone.ipynb" target="_blank">Colab</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture10/llm_building_gptstyle_llm_from_scratch.ipynb">Building a GPT-Style LLM from Scratch</a></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/llm_building_gptstyle_llm_from_scratch.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/llm_building_gptstyle_llm_from_scratch_standalone.ipynb" target="_blank">Colab</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture10/llm_openai_api_basics.ipynb">Working with the OpenAI API</a></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/llm_openai_api_basics.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/llm_openai_api_basics_standalone.ipynb" target="_blank">Colab</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture10/llm_local_inference_pretrained_models.ipynb">Using Pretrained LLMs Locally</a></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/llm_local_inference_pretrained_models.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/llm_local_inference_pretrained_models_standalone.ipynb" target="_blank">Colab</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture10/llm_training_data_preparation_basics.ipynb">Data Preparation for Training LLMs</a><span class="badge">optional</span></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/llm_training_data_preparation_basics.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/llm_training_data_preparation_basics_standalone.ipynb" target="_blank">Colab</a>
     </div>
     <div class="nb">
       <div class="nb-title"><a class="nb-link" data-path="Lecture10/llm_training_data_preparation_batching.ipynb">Data Batching for Training LLMs</a><span class="badge">optional</span></div>
-      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/llm_training_data_preparation_batching.ipynb" target="_blank">Colab</a>
+      <a class="btn-colab" href="https://colab.research.google.com/github/chrisvdweth/selene/blob/master/notebooks/standalone/llm_training_data_preparation_batching_standalone.ipynb" target="_blank">Colab</a>
     </div>
   </div>
 </div>

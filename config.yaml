@@ -1,0 +1,5 @@
+urls:
+  downloads:
+    notebooks: "https://github.com/chrisvdweth/selene/tree/master/notebooks"
+    datasets: "https://chrisvdw.net/projects/selene/downloads/datasets/"
+    models: "https://chrisvdw.net/projects/selene/downloads/models/"
