@@ -28,3 +28,7 @@ Open [website](https://lavanyagarg112.github.io/CS4248_notebooks/) in your brows
 
 ### Requirements
 - JupyterLab (`pip install jupyterlab`) or Jupyter Notebook (`pip install notebook`)
+
+
+### References
+All notebooks are from the [SELENE](https://github.com/chrisvdweth/selene), [CS4248](https://github.com/chrisvdweth/nus-cs4248x), and [CS5246](https://github.com/chrisvdweth/nus-cs5246) repositories. This page only organises and links them.
